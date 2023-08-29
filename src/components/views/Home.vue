@@ -4,7 +4,19 @@
 
 <script>
 export default {
-    name: 'Home'
+    name: 'Home',
+    activated(){
+      console.log('Componente ativado');
+    },
+    deactivated(){
+      console.log('Componente desativado');
+    },
+    beforeUnmount() {
+    console.log("antes de desmontar");
+  },
+  unmounted() {
+    console.log("Desmontado");
+  },
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <p> Publicar Vaga</p>
+  <h1>Componente Publicar Vaga</h1>
 </template>
 
 <script>
