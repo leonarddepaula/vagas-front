@@ -27,7 +27,7 @@
 
 <script>
     export default {
-        name: 'PesquisaVagas'
+        name: 'PesquisarVagas'
 
     }
 </script>
