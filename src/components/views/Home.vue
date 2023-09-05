@@ -10,7 +10,7 @@
       <div class="col">
         <vaga
           :titulo="vaga.titulo"
-          :descricao="vaga.descricao"
+          :descricao-vaga="vaga.descricao"
           :salario="vaga.salario"
           :modalidade="vaga.modalidade"
           :tipo="vaga.tipo"
@@ -75,7 +75,7 @@ export default {
         tipo: "PJ",
         publicacao: "2021-10-10",
       },
-      {
+     /* {
         titulo: "Programador JavaScript Angular",
         descricao:
           "Profissional com conhecimentos avançados em JavaScript e Angular.",
@@ -110,7 +110,7 @@ export default {
         modalidade: "Presencial",
         tipo: "CLT",
         publicacao: "2021-10-05",
-      },
+      }, */
     ],
   }),
 

@@ -1,23 +1,52 @@
 <template>
   <div class="card">
-    <div class="card-header bg-dark text-white">{{  titulo }}</div>
+    <div class="card-header bg-dark text-white">{{ titulo }}</div>
     <div class="card-body">
-      <p>{{ descricao }}</p>
+      <p>{{ descricaoVaga }}</p>
     </div>
     <div class="card-footer">
       <small class="text-muted"
-        >Salário: R$ {{ salario }} | Modalidade: {{ modalidade }} | Tipo: {{ tipo }} | Publicação: {{ publicacao }}
-        10/11/2021</small
+        >Salário: R$ {{ salario }} | Modalidade: {{ modalidade }} | Tipo:
+        {{ tipo }} | Publicação: {{ publicacao }} 10/11/2021</small
       >
     </div>
   </div>
 </template>
-
 <script>
+// teste
 export default {
-    name:'Vaga',
-    props: ['titulo', 'descricao', 'salario', 'modalidade', 'tipo', 'publicacao']
+  name: "Vaga",
+  props: {
+    titulo:{
+      type: String,
+      required: true,
+      validator(p){
+        console.log('Prop> ', p, p.length);
+          if(p.length < 6){ return false } // se estiver inválido
+             return true // se estiver válido
+       // 
+      }
+    },
+    descricaoVaga: {
+      type: String,
+      required: true
+    },
+    salario: {
+      type: [Number, String],
+      required: true
+    }, 
+    modalidade: {
+      type: String,
+      required: true
+    }, 
+    tipo: {
+      type: String,
+      required: true
+    }, 
+    publicacao: {
+      type: String,
+      required: true
+    },
+  },
 };
 </script>
-
-<style></style>
