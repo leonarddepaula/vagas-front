@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header bg-dark text-white">{{ titulo }}</div>
     <div class="card-body">
-      <p>{{ descricaoVaga }}</p>
+      <p>{{ descricao }}</p>
     </div>
     <div class="card-footer">
       <small class="text-muted"
@@ -21,15 +21,18 @@ export default {
       type: String,
       required: true,
       validator(p){
-        console.log('Prop> ', p, p.length);
+        console.log('Props', p, p.length);
           if(p.length < 6){ return false } // se estiver inválido
              return true // se estiver válido
        // 
       }
     },
-    descricaoVaga: {
+    descricao: {
       type: String,
-      required: true
+      // default: 'O contratante não adicionou uma descrição para vaga'
+      default() {
+        return '*'.repeat(20)
+      }
     },
     salario: {
       type: [Number, String],
