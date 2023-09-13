@@ -51,7 +51,7 @@
     </div>
 
     <div class="row mt-3">
-      {{ titulo }} | {{ descricao }} | {{ salario }} | {{ modalidade }} | {{ tipo }}
+      <!-- {{ titulo }} | {{ descricao }} | {{ salario }} | {{ modalidade }} | {{ tipo }} -->
       <div class="col">
         <button type="submit" class="btn btn-primary" @click="salvarVaga()">Cadastrar</button>
       </div>
@@ -72,21 +72,28 @@ export default {
     }),
     methods: {
       salvarVaga() {
+        let tempoDecorrrido = Date.now()
+        let dataAtual = new Date(tempoDecorrrido)
+  
+
         let vagas = JSON.parse(localStorage.getItem('vagas'))
         console.log(vagas);
 
         if(!vagas) vagas = []
 
         vagas.push({
-           titulo: this.titulo,
+          titulo: this.titulo,
           descricao: this.descricao,
           salario: this.salario,
           modalidade: this.modalidade,
-          tipo: this.tipo
+          tipo: this.tipo,
+          publicacao: dataAtual.toISOString()
         })
        
+
         localStorage.setItem('vagas', JSON.stringify(vagas))
-        console.log(vagas); 
+        console.log(vagas);
+        console.log(vagas.publicacao); 
       }
     }
 }
