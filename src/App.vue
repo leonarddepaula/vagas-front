@@ -2,7 +2,7 @@
   <div> <!--padrao kebab-case-->
     <h1>Componente App</h1>
     <button @click="desmontarComponente()">Desmontar Compo</button>
-    <topo-padrao />
+    <topo-padrao :funcaoCallback="acao" />
     <conteudo v-if="visibilidade"></conteudo>
   </div>
 </template>
@@ -24,6 +24,12 @@ export default {
     desmontarComponente(){
       this.visibilidade = false
     },
+    acao(p1, p2){
+      console.log('Função de callback');
+      console.log(p1);
+      console.log(p2);
+  
+    }
   },
 };
 </script>
