@@ -16,10 +16,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link "  href="#" @click="funcaoCallback('Teste 1', 200)">Home</a>
+            <a class="nav-link "  href="#" @click="navegarPara('Home')">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" @click="funcaoCallback('Teste 2', 300)">Publicar Vaga</a>
+            <a class="nav-link" href="#" @click="navegarPara('PublicarVaga')">Publicar Vaga</a>
           </li>
         
         </ul>
@@ -32,8 +32,10 @@
 <script>
 export default {
   name: "TopoPadrao",
-  props: {
-    funcaoCallback: Function
+  methods: {
+    navegarPara(p) {
+      this.$emit('navegar', p)
+    }
   }
 };
 </script>

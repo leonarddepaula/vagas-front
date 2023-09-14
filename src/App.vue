@@ -1,9 +1,8 @@
 <template>
-  <div> <!--padrao kebab-case-->
-    <h1>Componente App</h1>
-    <button @click="desmontarComponente()">Desmontar Compo</button>
-    <topo-padrao :funcaoCallback="acao" />
-    <conteudo v-if="visibilidade"></conteudo>
+  <div>
+    <!--padrao kebab-case-->
+    <topo-padrao @navegar="componente = $event" />
+    <conteudo v-if="visibilidade" :conteudo="componente"></conteudo>
   </div>
 </template>
 
@@ -15,25 +14,13 @@ export default {
   name: "App",
   data: () => ({
     visibilidade: true,
+    componente: "Home",
   }),
   components: {
     Conteudo,
     TopoPadrao,
   },
-  methods:{
-    desmontarComponente(){
-      this.visibilidade = false
-    },
-    acao(p1, p2){
-      console.log('Função de callback');
-      console.log(p1);
-      console.log(p2);
-  
-    }
-  },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
