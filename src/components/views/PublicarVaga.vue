@@ -8,29 +8,33 @@
 
     <div class="row mt-3">
       <div class="col">
-        <label class="form-label" >Titulo da Vaga</label>
-        <input type="text" class="form-control" v-model="titulo">
+        <label class="form-label">Titulo da Vaga</label>
+        <input type="text" class="form-control" v-model="titulo" />
         <div class="form-text">Por exemplo: Progamador JavaScript e VueJs.</div>
       </div>
     </div>
-    
+
     <div class="row mt-3">
       <div class="col">
-        <label class="form-label" >Descrição</label>
-        <textarea type="text" class="form-control" v-model="descricao"></textarea>
+        <label class="form-label">Descrição</label>
+        <textarea
+          type="text"
+          class="form-control"
+          v-model="descricao"
+        ></textarea>
         <div class="form-text">Informe o salário.</div>
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="col">
-        <label class="form-label" >Salário</label>
-        <input type="number" class="form-control" v-model="salario">
+        <label class="form-label">Salário</label>
+        <input type="number" class="form-control" v-model="salario" />
         <div class="form-text">Informe o salário.</div>
       </div>
 
       <div class="col">
-        <label class="form-label" >Modalidade</label>
+        <label class="form-label">Modalidade</label>
         <select class="form-select" v-model="modalidade">
           <option value="" disabled>--Selecione</option>
           <option value="1">Home Office</option>
@@ -38,9 +42,9 @@
         </select>
         <div class="form-text">Informe o modelo de trabalho</div>
       </div>
-      
+
       <div class="col">
-        <label class="form-label" >Tipo</label>
+        <label class="form-label">Tipo</label>
         <select class="form-select" v-model="tipo">
           <option value="" disabled>--Selecione</option>
           <option value="1">CLT</option>
@@ -52,52 +56,49 @@
 
     <div class="row mt-3">
       <div class="col">
-        <button type="submit" class="btn btn-primary" @click="salvarVaga()">Cadastrar</button>
+        <button type="submit" class="btn btn-primary" @click="salvarVaga()">
+          Cadastrar
+        </button>
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
 export default {
-    name: 'PublicarVaga',
-    data: () => ({
-      titulo: '',
-      descricao: '',
-      salario: '',
-      modalidade: '',
-      tipo: ''
-    }),
-    methods: {
-      salvarVaga() {
-        let tempoDecorrrido = Date.now()
-        let dataAtual = new Date(tempoDecorrrido)
-  
+  name: "PublicarVaga",
+  data: () => ({
+    titulo: "",
+    descricao: "",
+    salario: "",
+    modalidade: "",
+    tipo: "",
+  }),
+  methods: {
+    salvarVaga() {
+      let tempoDecorrrido = Date.now();
+      let dataAtual = new Date(tempoDecorrrido);
 
-        let vagas = JSON.parse(localStorage.getItem('vagas'))
-        console.log(vagas);
+      let vagas = JSON.parse(localStorage.getItem("vagas"));
+      console.log(vagas);
 
-        if(!vagas) vagas = []
+      if (!vagas) vagas = [];
 
-        vagas.push({
-          titulo: this.titulo,
-          descricao: this.descricao,
-          salario: this.salario,
-          modalidade: this.modalidade,
-          tipo: this.tipo,
-          publicacao: dataAtual.toISOString()
-        })
-       
+      vagas.push({
+        titulo: this.titulo,
+        descricao: this.descricao,
+        salario: this.salario,
+        modalidade: this.modalidade,
+        tipo: this.tipo,
+        publicacao: dataAtual.toISOString(),
+      });
 
-        localStorage.setItem('vagas', JSON.stringify(vagas))
-        console.log(vagas);
-        console.log(vagas.publicacao); 
-      }
-    }
-}
+      localStorage.setItem("vagas", JSON.stringify(vagas));
+      console.log(vagas);
+      console.log(vagas.publicacao);
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

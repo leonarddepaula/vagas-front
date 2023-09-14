@@ -54,7 +54,7 @@ export default {
   components: {
     PesquisarVagas,
     Indicador,
-    Vaga,
+    Vaga
   },
   data: () => ({
     usuariosOnline: 0,
@@ -75,4 +75,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+
