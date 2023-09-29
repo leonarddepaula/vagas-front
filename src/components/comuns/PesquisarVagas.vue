@@ -21,8 +21,10 @@
       <div class="col">
         <button class="btn btn-outline-dark mt-2" type="button">Buscar</button>
       </div>
+      <br />
     </div>
   </div>
+  <div></div>
 </template>
 
 <script>
