@@ -94,11 +94,16 @@ export default {
       });
 
       localStorage.setItem("vagas", JSON.stringify(vagas));
-      console.log(vagas);
-      console.log(vagas.publicacao);
+
+      this.resetaFormularioCadastroVaga()
     },
-  },
+    resetaFormularioCadastroVaga() {
+      this.titulo = '',
+      this.descricao = '',
+      this.salario = '',
+      this.modalidade = '',
+      this.tipo = ''
+  }
+}
 };
 </script>
-
-<style></style>

@@ -8,9 +8,12 @@
           </div>
           <div>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" />
+              <input
+                class="form-check-input"
+                type="checkbox"
+                v-model="favoritada"
+              />
               <label class="form-check-label">Favoritar</label>
-              <button class="btn btn-danger" @click="dispararEventoComMitt()">Teste</button>
             </div>
           </div>
         </div>
@@ -30,17 +33,30 @@
 <script>
 export default {
   name: "Vaga",
+  data: () => ({
+    favoritada: false,
+  }),
+  watch: {
+    favoritada(valorNovo) {
+      if (valorNovo) {
+        this.emitter.emit("favoritarVaga", this.titulo);
+      } else {
+        this.emitter.emit("desfavoritarVaga", this.titulo);
+      }
+    },
+  },
   props: {
     titulo: {
       type: String,
       required: true,
       validator(p) {
-        console.log("Props", p, p.length);
         if (p.length < 6) {
           return false;
-        } // se estiver inválido
-        return true; // se estiver válido
-        //
+        } else {
+          // se estiver inválido
+          return true; // se estiver válido
+          //
+        }
       },
     },
     descricao: {
@@ -91,10 +107,5 @@ export default {
       return dataPublicacao.toLocaleDateString("pt-BR");
     },
   },
-  methods: {
-    dispararEventoComMitt(){
-      this.emitter.emit('eventoGlobal1','teste captura evento parametro')
-    }
-  }
 };
 </script>

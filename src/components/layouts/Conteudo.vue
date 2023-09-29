@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import PublicarVaga from "../views/PublicarVaga.vue";
-import Home from "../views/Home.vue";
+import PublicarVaga from "@/components/views/PublicarVaga.vue";
+import Home from "@/components/views/Home.vue";
 
 export default {
   name: "Conteudo",
@@ -24,18 +24,8 @@ export default {
   },
 
   // lifecycle Hooks
-  created() {
-    console.log("Criado", this.teste);
-  },
+  // created() {
+  //   console.log("Criado", this.teste);
+  // },
 };
 </script>
-
-<style module>
-.teste-1 {
-  background-color: red;
-}
-
-#teste-2 {
-  background-color: yellow;
-}
-</style>
