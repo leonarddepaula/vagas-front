@@ -93,7 +93,9 @@ export default {
         publicacao: dataAtual.toISOString(),
       });
 
-      localStorage.setItem("vagas", JSON.stringify(vagas));
+      //localStorage.setItem("vagas", JSON.stringify(vagas));
+
+      this.emitter.emit('alerta')
 
       this.resetaFormularioCadastroVaga()
     },
