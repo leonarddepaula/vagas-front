@@ -54,11 +54,11 @@ export default {
   components: {
     PesquisarVagas,
     Indicador,
-    Vaga
+    Vaga,
   },
   data: () => ({
     usuariosOnline: 0,
-    vagas: [ ],
+    vagas: [],
   }),
 
   methods: {
@@ -69,10 +69,17 @@ export default {
   created() {
     setInterval(this.getUsuariosOnline, 1500);
   },
-  activated(){
-    this.vagas = JSON.parse(localStorage.getItem('vagas'))
+  activated() {
+    this.vagas = JSON.parse(localStorage.getItem("vagas"));
+  },
+  mounted() {
+    this.emitter.on("filtrarVagas", (vaga) => {
+      const vagas = JSON.parse(localStorage.getItem("vagas"));
+
+      this.vagas = vagas.filter((reg) =>
+        reg.titulo.toLowerCase().includes(vaga.titulo.toLowerCase())
+      );
+    });
   },
 };
 </script>
-
-

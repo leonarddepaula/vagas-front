@@ -100,7 +100,7 @@ export default {
           tipo: 'sucesso',
           titulo: `A vaga ${this.titulo} foi casdrata com Sucesso!`,
           descricao: "A vaga já pode ser consultada  na plataforma",
-        });
+        }); 
 
         this.resetaFormularioCadastroVaga();
       } else {
