@@ -93,19 +93,42 @@ export default {
         publicacao: dataAtual.toISOString(),
       });
 
-      //localStorage.setItem("vagas", JSON.stringify(vagas));
+      if (this.validaFormulario()) {
+        localStorage.setItem("vagas", JSON.stringify(vagas));
 
-      this.emitter.emit('alerta')
+        this.emitter.emit("alerta", {
+          tipo: 'sucesso',
+          titulo: `A vaga ${this.titulo} foi casdrata com Sucesso!`,
+          descricao: "A vaga já pode ser consultada  na plataforma",
+        });
 
-      this.resetaFormularioCadastroVaga()
+        this.resetaFormularioCadastroVaga();
+      } else {
+        this.emitter.emit("alerta", {
+          tipo: 'erro',
+          titulo: "-_- Opsss... Não foi posssivel realizar o cadastro!",
+          descricao: "aprece que que Você esqueceu de preeencher algum campo",
+        });
+      }
+
     },
     resetaFormularioCadastroVaga() {
-      this.titulo = '',
-      this.descricao = '',
-      this.salario = '',
-      this.modalidade = '',
-      this.tipo = ''
-  }
-}
+      (this.titulo = ""),
+        (this.descricao = ""),
+        (this.salario = ""),
+        (this.modalidade = ""),
+        (this.tipo = "");
+    },
+    validaFormulario() {
+      let valido = true;
+      if (this.titulo === "") valido = false;
+      if (this.descricao === "") valido = false;
+      if (this.salario === "") valido = false;
+      if (this.modalidade === "") valido = false;
+      if (this.tipo === "") valido = false;
+
+      return valido;
+    },
+  },
 };
 </script>

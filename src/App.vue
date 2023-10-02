@@ -2,7 +2,12 @@
   <div>
     <!--padrao kebab-case-->
     <topo-padrao @navegar="componente = $event" />
-    <alerta v-if="exibirAlerta"/>
+    <alerta v-if="exibirAlerta" :tipo="alerta.tipo">
+      <template v-slot:titulo>
+        <h5>{{alerta.titulo}}</h5>
+      </template>
+      <p>{{alerta.descricao}}</p>
+    </alerta>
     <vagas-favoritas></vagas-favoritas>
     <conteudo v-if="visibilidade" :conteudo="componente"></conteudo>
   </div>
@@ -19,7 +24,8 @@ export default {
   data: () => ({
     visibilidade: true,
     componente: "Home",
-    exibirAlerta: false
+    exibirAlerta: false,
+    alerta: {titulo: '', descricao: '', tipo:''}
   }),
   components: {
     Alerta,
@@ -27,12 +33,13 @@ export default {
     TopoPadrao,
     VagasFavoritas,
   },
-  mounted(){
-    this.emitter.on('alerta', () =>{
-      this.exibirAlerta = true
-      setTimeout(()=> this.exibirAlerta = false, 4000)
-      console.log('Apresentar a msg de laerta customizada');
-    })
-  }
+  mounted() {
+    this.emitter.on("alerta", (obj) => {
+      this.alerta = obj
+      this.exibirAlerta = true;
+      setTimeout(() => (this.exibirAlerta = false), 4000);
+      
+    });
+  },
 };
 </script>
