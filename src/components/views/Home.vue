@@ -6,7 +6,19 @@
       </div>
     </div>
 
-    <lista-vagas />
+    <lista-vagas>
+      <!-- <template v-slot:titulo="slotProps">
+        {{ slotProps }}
+      </template>
+
+      <template v-slot:default="slotProps">
+        {{ slotProps }}
+      </template>
+
+      <template v-slot:rodape="slotProps">
+        {{ slotProps }}
+      </template> -->
+    </lista-vagas>
 
     <div class="row mt-5">
       <div class="col-4">
